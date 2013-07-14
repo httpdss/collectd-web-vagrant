@@ -1,0 +1,3 @@
+[submodule "cookbooks/collectd"]
+	path = cookbooks/collectd
+	url = git://github.com/httpdss/chef-collectd.git
