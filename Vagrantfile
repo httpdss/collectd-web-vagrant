@@ -12,19 +12,24 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # config.vm.synced_folder "../collectd-web", "/collectd-web"
 
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "128"]
   end
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
+    chef.add_recipe('collectd::server')
+    chef.add_recipe('collectd::collectd_web_apache')
+    #chef.add_recipe('collectd::client')
     # You may also specify custom JSON attributes:
-    # chef.json = { :mysql_password => "foo" }
+    # chef.json = {
+    #   :collectd => {
+    #     :collectd_web => {
+    #       :path => '/collectd-web'
+    #     }
+    #   }
+    # }
   end
 end
