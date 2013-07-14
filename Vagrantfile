@@ -20,8 +20,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
+    chef.add_recipe('apache2')
     chef.add_recipe('collectd::server')
     chef.add_recipe('collectd::collectd_web_apache')
+    chef.add_recipe('collectd::plugins')
     #chef.add_recipe('collectd::client')
     # You may also specify custom JSON attributes:
     # chef.json = {
