@@ -1,6 +1,6 @@
-[submodule "cookbooks/collectd"]
-	path = cookbooks/collectd
-	url = https://github.com/httpdss/collectd-web-vagrant.git
 [submodule "cookbooks/apache2"]
 	path = cookbooks/apache2
 	url = https://github.com/opscode-cookbooks/apache2.git
+[submodule "cookbooks/collectd"]
+    path = cookbooks/collectd
+    url = https://github.com/httpdss/chef-collectd.git
